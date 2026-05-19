@@ -1,7 +1,7 @@
 name: llama-cpp
 base: core26
 build-base: devel
-version: "b8851"
+version: "b9222"
 summary: Snap package for llama.cpp - LLM inference in C/C++
 description: |
   This snap provides llama.cpp with different backends like HIP (for AMD GPU)
@@ -28,14 +28,6 @@ platforms:
       - arm64
 grade: devel
 confinement: devmode
-package-repositories:
-  - type: apt
-    components:
-      - main
-    suites:
-      - resolute
-    key-id: 9272F44EA10223C73B884BADB35AA5B4E400B24A
-    url: https://ppa.launchpadcontent.net/tchavadar/rocm-with-llvm-21/ubuntu
 environment:
   # Set path to snap components
   SNAP_COMPONENTS: /snap/$SNAP_INSTANCE_NAME/components/$SNAP_REVISION
@@ -66,7 +58,7 @@ parts:
       "hip": (component/hip)
   llama-cpp-hip:
     source: https://github.com/ggml-org/llama.cpp.git
-    source-tag: b8851
+    source-tag: b9222
     source-depth: 1
     build-packages:
       - rocm-cmake
