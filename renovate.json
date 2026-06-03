@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": [
+    "custom.regex"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/snap/snapcraft\\.yaml/"],
+      "matchStrings": [
+        "version:\\s*\"(?<currentValue>b\\d+)\"",
+        "source-tag:\\s*(?<currentValue>b\\d+)"
+      ],
+      "depNameTemplate": "ggml-org/llama.cpp",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "regex:^b(?<major>\\d+)$"
+    }
+  ]
+}
